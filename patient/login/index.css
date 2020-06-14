@@ -1,0 +1,81 @@
+:root {
+    --color-background-color: #f2f2f2;
+    --color-white: #fff;
+    --color-black: #000;
+    --color-primary-2: #4158d0;
+    --color-error-red: red;
+}
+
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: '62.5%'
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: '400';
+    line-height: '1.6rem';
+    font-size: '1.6rem';
+
+    background-color: var(--color-background-color);
+
+}
+
+.center-div {
+    background-color: white;
+    padding: 4rem 2rem;
+}
+
+.form__heading {
+    padding: 2rem 0;
+}
+
+.imgs {
+    padding: 2rem 0;
+    height: 20vh;
+}
+
+.btnsubmit {
+    margin: 1rem 0;
+    padding: .8rem 2rem;
+}
+
+.btn:disabled {
+    cursor: not-allowed;
+}
+
+.form__span__errors {
+    color: var(--color-error-red);
+}
+
+.ng-invalid.ng-touched {
+    border: 1px solid var(--color-error-red) !important;
+}
+
+.error__border {
+    border: 1px solid var(--color-error-red) !important;
+}
+
+#login__error {
+    display: inline-block;
+    background-color: black;
+    color: white;
+    font-weight: 500;
+    text-transform: uppercase;
+    padding: .2rem 1.5rem;
+     margin: 1rem 0;
+    border-radius: .3rem;
+}
+
+@media only screen and (max-width: 800px) {
+    .hidden_mobile {
+        display: none;
+    }
+}
