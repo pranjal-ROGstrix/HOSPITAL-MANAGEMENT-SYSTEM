@@ -48,9 +48,9 @@
         registration.mobileValidation = function () {
             let mobile = registration.number;
             let strmob = $('#mobile').val();
-            let len = (''+mobile).length;
+            let len = ('' + mobile).length;
             console.log(strmob)
-            if(isNaN(mobile)) {
+            if (isNaN(mobile)) {
                 $('#form__span__error__mobile').html("please enter a valid mobile");
                 $('#form__span__error__mobile').show();
                 $('#mobile').addClass("error__border");
@@ -60,8 +60,7 @@
                 $('#form__span__error__mobile').show();
                 $('#mobile').addClass("error__border");
                 $('#mobile').focus();
-            }
-             else {
+            } else {
                 $('#form__span__error__mobile').hide();
                 $('#mobile').removeClass('error__border');
                 $('#mobile').addClass('border-success');
@@ -88,6 +87,7 @@
             }
         }
         registration.formSubmit = function () {
+            let url = window.backend__url + "patient_login/signup/";
             let name = registration.name;
             let email = registration.email;
             let password = registration.password;
@@ -96,7 +96,7 @@
             let age = registration.age;
             $http({
                     method: 'POST',
-                    url: 'http://184aa08b28a4.ngrok.io/patient_login/signup/',
+                    url: url,
                     data: {
                         'email': email,
                         'name': name,
@@ -110,6 +110,7 @@
                     function mySuccess(response) {
                         formdata = response;
                         console.log(formdata)
+                        window.location.href = "../login/index.html"
                         // window.location.href = "../homepage/index.html?b=" + email;
                     }
                     // function myError(response) {

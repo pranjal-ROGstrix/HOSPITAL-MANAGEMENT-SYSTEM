@@ -1,0 +1,21 @@
+<div class="main_content">
+    <h3 class="text-center table--heading">REGISTERED DOCTORS</h3>
+    <table class="text-center table">
+        <tr>
+            <th class="text-center">Name</th>
+            <th class="text-center">Degree</th>
+            <th class="text-center">Field</th>
+            <th class="text-center">Contact No.</th>
+            <th class="text-center">Email</th>
+        </tr>
+        <tr ng-repeat="x in accdocCtrl.accepted">
+            <td>Dr.{{x.name}}</td>
+            <td>{{x.doctor_degree}}</td>
+            <td>{{x.field}}</td>
+            <td>{{x.mobile_no}}</td>
+            <td>{{x.email}}</td>
+        </tr>
+    </table>
+</div>
+
+<!-- accdocCtrl.accepted -->

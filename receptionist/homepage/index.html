@@ -11,8 +11,8 @@
     <title>HOMEPAGE | RECEPTIONIST</title>
 </head>
 
-<body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+<body ng-app="app">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light  text-center">
         <a class="navbar-brand" href="#">BORING HOSPITAL</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -21,28 +21,51 @@
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ml-auto">
-                <!-- <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Dropdown
+                <li class="nav-item">
+                    <a class="nav-link" ui-sref="root">Home</a>
+                </li>
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false">
+                        Doctor
                     </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#">Action</a>
-                        <a class="dropdown-item" href="#">Another action</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Something else here</a>
-                    </div>
+                    <div class="dropdown-menu  text-center" aria-labelledby="navbarDropdown">
+                        <a class="nav-link" ui-sref="pending__doctors">Pending Doctors</a>
+                        <a class="dropdown-item" ui-sref="doctors__accepted">Registered Doctors</a>
+                        <a class="dropdown-item" ui-sref="doctors__rejected">Rejected Doctors</a>
+                </li>
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false">
+                        Patient
+                    </a>
+                    <div class="dropdown-menu  text-center" aria-labelledby="navbarDropdown">
+                        <a class="nav-link" ui-sref="patient__registered">Our Patients</a>
+                        <a class="dropdown-item" ui-sref="appointment">Appointments</a>
+                        <a class="dropdown-item" ui-sref="#">Payments</a>
+                </li>
+
+                <!-- <li class="nav-item">
+                    <a class="nav-link" ui-sref="payment">Payments</a>
                 </li> -->
-                <li class="nav-item active">
-                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                <li class="nav-item">
+                    <a class="nav-link" ui-sref="report">Reports</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Logout</a>
+                    <a class="nav-link" ui-sref="logout">Logout</a>
                 </li>
             </ul>
 
         </div>
     </nav>
+
+    <div class="view-main">
+        <div class="container">
+            <div class="ui-view"></div>
+        </div>
+    </div>
 
 
 
@@ -56,9 +79,17 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
         integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous">
     </script>
-    <script src="../../Angular_files/angular.js"></script>
-    <script src="../location.js"></script>
+    <!-- AngularJS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.9/angular.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.3.2/angular-ui-router.min.js"></script>
+    <script src="../../url.js"></script>
     <script src="index.js"></script>
 </body>
 
 </html>
+
+
+<!-- our patients,
+appointments,
+payment,
+ -->

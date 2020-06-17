@@ -1,6 +1,6 @@
 (function () {
     $('#error__span').hide()
-    var backend = window.window.backend__url + 'Manager_login/login/';
+    var backend = window.window.backend__url+'Manager_login/login/';
     var app = angular.module('app', []);
     app.controller('loginController', function ($http) {
         var login = this;
@@ -20,17 +20,15 @@
                 .then(
                     function mySuccess(response) {
                         formdata = response.data;
-                        console.log(formdata)
-                        if (formdata == 'invalid credentials') {
+                        if (formdata == 'ok') {
+                            // sessionStorage.setItem("key", "value");
+                            // window.location.href = "../homepage/index.html"
+                        } else {
                             $('#error__span').show()
                             login.email = "";
                             login.password = "";
-                        } else {
-                            sessionStorage.setItem("email", formdata[0].email);
-                            console.log(sessionStorage)
-                            window.location.href = "../homepage/index.html"
                         }
-                        // console.log(formdata);
+                        console.log(formdata);
                         // window.location.href = "../homepage/index.html?b=" + email;
                     },
                     function myError(response) {

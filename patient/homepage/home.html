@@ -1,0 +1,85 @@
+<div class="main-content">
+<h4 class="home_heading">Welcome {{homeCtrl.name}}</h4>
+
+<h5 class="text-center home_table_heading">Your Appointment Details</h5>
+
+<table id="home__table" class="table">
+    <tr>
+        <!-- <th>Sr No</th> -->
+        <th>booking date</th>
+        <th>Date of Appointment</th>
+        <th>Time of Appointment</th>
+        <th>Status</th>
+        <th>Fees</th>
+    </tr>
+    <tr ng-repeat="x in homeCtrl.appointment_details">
+        <!-- <td>{{x.id}}</td> -->
+        <td>{{x.booking_date}}</td>
+        <td>{{x.date_of_appointment}}</td>
+        <td>{{x.time_of_appointment}}</td>
+        <td>{{x.status}}</td>
+        <td>{{x.fees}}</td>
+    </tr>
+</table>
+<h5 class="text-center home_table_heading">Your Medical History</h5>
+<table id="home_med" class="table">
+    <tr>
+        <!-- <th>Sr No</th> -->
+        <th>Characteristics</th>
+        <th>Details</th>
+    </tr>
+    <tr>
+        <td>Booking Date</td>
+        <td>{{homeCtrl.height}}</td>
+    </tr>
+    <tr>
+        <td>Your weight</td>
+        <td>{{homeCtrl.weight}}</td>
+    </tr>
+    <tr>
+        <td>Your Blood Group</td>
+        <td>{{homeCtrl.blood_group}}</td>
+    </tr>
+    <tr>
+        <td>Previous Problems faced</td>
+        <td>{{homeCtrl.previous_problem}}</td>
+    </tr>
+</table>
+
+</div>
+<!-- <div class="container">
+    <div class="row">
+        <div class="col-12 col-md-4 offset-md-1">
+            <button ng-click="homeCtrl.appointment_details()" class="btn btn-primary btn__home"
+            id="home__appointment_details__button">Appointment Details</button>
+        </div>
+        <div class="col-12 col-md-4 offset-md-1">
+            <button ng-click="homeCtrl.medical_history()" class="btn btn-primary btn__home" id="home__med_history__button">Your Medical
+                History</button>
+        </div>
+    </div>
+</div> -->
+
+
+
+
+<!-- 
+<ul id="home_med">
+    <li>Your height is {{homeCtrl.height}}</li>
+    <li>Your weight is {{homeCtrl.weight}}</li>
+    <li>Your blood group is {{homeCtrl.blood_group}}</li>
+    <li>Previous problem was {{homeCtrl.previous_problem}}</li>
+</ul> -->
+
+
+
+<!-- <script>
+    $('#home__table').hide();
+    $('#home__appointment_details__button').click(function () {
+        $('#home__table').toggle();
+    })
+    $('#home_med').hide();
+    $('#home__med_history__button').click(function () {
+        $('#home_med').toggle();
+    })
+</script> -->

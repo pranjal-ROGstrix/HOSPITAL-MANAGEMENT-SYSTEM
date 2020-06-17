@@ -43,9 +43,34 @@
                                 </div>
 
                                 <div class="form-group">
+                                    <label for="number">Contact Number</label>
+                                    <input type="number" class="form-control" id="mobile" ng-model="registration.number"
+                                        ng-blur="registration.mobileValidation()" required>
+                                    <span class="text-danger" id="form__span__error__mobile"></span>
+                                </div>
+
+                                <!-- <div class="form-group">
                                     <label for="degree" class="form__label">Degree</label>
                                     <input type="text" class="form-control" id="degree" name="degree"
-                                        ng-model="registration.degree" required >
+                                        ng-model="registration.degree" required>
+                                </div> -->
+
+                                <!-- <select name="repeatSelect" id="repeatSelect" ng-model="registration.model">
+                                    <option ng-repeat="option in registration.degree" value="{{option.link__degree}}">
+                                        {{option.link__degree}}</option>
+                                </select> -->
+                                <div class="form-group">
+                                    <select id="country" ng-model="registration.selectedDegree"
+                                        ng-options="option.degree as option.degree for option in registration.degree"
+                                        ng-click="registration.getSpecializations()">
+                                        <option value="" class="form-control">Degree</option>
+                                    </select>
+                                    Speciaslizations:
+                                    <select id="state" ng-model="registration.speciaslizations"
+                                        ng-disabled="!registration.selectedDegree"
+                                        ng-options="option.field as option.field for option in registration.field">
+                                        <option value="" class="form-control">Choose</option>
+                                    </select>
                                 </div>
 
                                 <div class="form-group">
@@ -94,6 +119,7 @@
     </script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.9/angular.min.js"></script>
     <!-- <script src="../../Angular_files/angular.js"></script> -->
+    <script src="../../url.js"></script>
     <script src="index.js"></script>
 </body>
 

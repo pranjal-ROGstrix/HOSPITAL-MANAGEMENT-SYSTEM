@@ -2,13 +2,39 @@
     var app = angular.module('app', []);
     app.controller('RegistrationController', function ($http) {
         let registration = this;
+        registration.url = window.backend__url+'doctor_login/';
+        $http({
+            method:'GET',
+            url:registration.url+'degree/'
+        })
+        .then(
+            function mySuccess(response) {
+                registration.degree = response.data;
+                console.log(registration.degree)
+            }
+        )
+
+        registration.getSpecializations = function () {
+            $http({
+                method:'GET',
+                url:registration.url+'field/?degree='+registration.selectedDegree
+            })
+            .then(
+                function mySuccess(response) {
+                    registration.field = response.data
+                    // registration.degree = response.data;
+                    console.log(registration.field)
+                }
+            )
+        }
+        
         $('#form__span__error__name').hide();
         $('#form__span__error__email').hide();
         $('#form__span__error__confirmpassword').hide();
 
         registration.nameValidation = function () {
             let name = registration.name;
-            console.log(name)
+            // console.log(name)
             if (!isNaN(name)) {
                 $('#form__span__error__name').html("please enter a valid name");
                 $('#form__span__error__name').show();
@@ -27,6 +53,29 @@
                 return true;
             }
         }
+
+        registration.mobileValidation = function () {
+            let mobile = registration.number;
+            let strmob = $('#mobile').val();
+            let len = ('' + mobile).length;
+            console.log(strmob)
+            if (isNaN(mobile)) {
+                $('#form__span__error__mobile').html("please enter a valid mobile");
+                $('#form__span__error__mobile').show();
+                $('#mobile').addClass("error__border");
+                $('#mobile').focus();
+            } else if (len != 10) {
+                $('#form__span__error__mobile').html("please enter a valid mobile");
+                $('#form__span__error__mobile').show();
+                $('#mobile').addClass("error__border");
+                $('#mobile').focus();
+            } else {
+                $('#form__span__error__mobile').hide();
+                $('#mobile').removeClass('error__border');
+                $('#mobile').addClass('border-success');
+            }
+        }
+        
         registration.confirmpasswordValidation = function () {
             let confirmpassword = registration.confirmPassword;
             let password = registration.password;
@@ -49,21 +98,26 @@
             let name = registration.name;
             let email = registration.email;
             let password = registration.password;
-            let degree = registration.degree;
+            let degree = registration.selectedDegree;
+            let field = registration.speciaslizations
+            let number = registration.number;
+            console.log(registration)
             $http({
                 method: 'POST',
-                url: 'http://f040a5cf56fa.ngrok.io/doctor_login/signup/',
+                url: registration.url+'signup/',
                 data: {
-                    'email': name,
+                    'email': email,
                     'name': name,
                     'password': password,
-                    'degree': degree
+                    'degree': degree,
+                    'field': field,
+                    'contact_no': number
                 }
             })
             .then(
                 function mySuccess(response) {
                     formdata = response;
-                    console.log(formdata.data.status)
+                    console.log(formdata.data)
                     // window.location.href = "../homepage/index.html?b=" + email;
                 }
                 // function myError(response) {

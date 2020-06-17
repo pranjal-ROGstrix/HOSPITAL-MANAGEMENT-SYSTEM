@@ -1,0 +1,19 @@
+<div class="main_content">
+    <h3 class="text-center table--heading">Our Patients</h3>
+    <table class="table text-center">
+        <tr>
+            <th class="text-center">Name</th>
+            <th class="text-center">Age</th>
+            <th class="text-center">Contact No.</th>
+            <th class="text-center">Email</th>
+            <th class="text-center">Gender</th>
+        </tr>
+        <tr ng-repeat="x in patregCtrl.patients_registered">
+        <td>{{x.name}}</td>
+        <td>{{x.age}}</td>
+        <td>{{x.mobile_no}}</td>
+        <td>{{x.email}}</td>
+        <td>{{x.gender}}</td>
+        </tr>
+    </table>
+</div>

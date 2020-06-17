@@ -1,1 +1,0 @@
-window.backend__locationLogin = "https://9d575844cba2.ngrok.io/Manager_login/login/";

@@ -1,1 +1,76 @@
-MEDICAL
+<div class="main-content">
+    <div class="container">
+        <h3 class="text-center medical__history__heading">Medical History</h3>
+        <div class="row">
+            <div class="col-12 col-lg-8 offset-lg-2">
+                <form novalidate name="applicationForm">
+                    <div class="form-group">
+                        <label for="height">Your height</label>
+                        <div class="input-group mb-3">
+                            <input type="number" class="form-control" id="height" ng-model="medCtrl.height" required
+                                ng-maxlength="3">
+                            <div class="input-group-append">
+                                <span class="input-group-text">cms</span>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="form-group">
+                        <label for="weight">Your weight</label>
+                        <div class="input-group mb-3">
+                            <input type="number" class="form-control" id="weight" ng-model="medCtrl.weight" required
+                                ng-maxlength="3">
+                            <div class="input-group-append">
+                                <span class="input-group-text">Kg</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="blood_group">Blood Group</label>
+                        <input type="text" class="form-control" id="blood_group" ng-model="medCtrl.blood_group"
+                            required>
+                    </div>
+                    <div class="form-group">
+                        <label for="problem">Any previous problem</label>
+                        <input type="text" class="form-control" id="problem" ng-model="medCtrl.problem" required>
+                    </div>
+                    <!-- <div class="form-group">
+              <label for="number">Fees</label>
+              <input type="text" class="form-control" id="text" ng-model="medCtrl.fees" required placeholder="500">
+            </div> -->
+                    <div class="d-flex justify-content-center">
+                        <button type="submit" class="btn btn-primary appoitment__btn" ng-click="medCtrl.submit()"
+                            ng-disabled="applicationForm.$invalid" id="medical__myBtn">Submit</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div id="medical__myModal" class="medical__modal">
+            <div class="medical__modal-content">
+                <span class="medical__close">&times;</span>
+                <p>{{medCtrl.message}}</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        var modal = document.getElementById("medical__myModal");
+      
+        var btn = document.getElementById("medical__myBtn");
+      
+        var span = document.getElementsByClassName("medical__close")[0];
+      
+        btn.onclick = function () {
+          modal.style.display = "block";
+        }
+      
+        span.onclick = function () {
+          modal.style.display = "none";
+        }
+      
+        window.onclick = function (event) {
+          if (event.target == modal) {
+            modal.style.display = "none";
+          }
+        }
+      </script>

@@ -1,0 +1,68 @@
+<div class="main_content">
+    <div class="form-group">
+        <select id="country" ng-model="appCtrl.id"
+            ng-options="option.id as option.key__name for option in appCtrl.appointments__pending"
+            ng-click="appCtrl.details()">
+            <option value="" class="form-control">Patient's Name</option>
+        </select>
+    </div>
+
+    <table class="table">
+        <!-- <tr>
+        <th class="text-center">Characte</th>
+        <th class="text-center">Forward/Reject</th>
+    </tr> -->
+        <tr>
+            <td>Name of Patient</td>
+            <td>{{appCtrl.patient_list.key__name}}</td>
+        </tr>
+        <tr>
+            <td>Booking Date</td>
+            <td>{{appCtrl.patient_list.booking_date}}</td>
+        </tr>
+        <tr>
+            <td>Date of Appointment</td>
+            <td>{{appCtrl.patient_list.date_of_appointment}}</td>
+        </tr>
+        <tr>
+            <td>Time of Appointment</td>
+            <td>{{appCtrl.patient_list.time_of_appointment}}</td>
+        </tr>
+        <tr>
+            <td>Payment Amount</td>
+            <td>{{appCtrl.patient_list.fees}}</td>
+        </tr>
+        <tr>
+            <td>Problem</td>
+            <td>{{appCtrl.patient_list.problem}}</td>
+        </tr>
+
+    </table>
+    <form>
+    <div class="form-group">
+        <select id="country" ng-model="appCtrl.selectedDegree"
+            ng-options="option.degree as option.degree for option in appCtrl.degree"
+            ng-click="appCtrl.getSpecializations()">
+            <option value="" class="form-control">Degree</option>
+        </select>
+        Speciaslizations:
+        <select ng-model="appCtrl.speciaslizations" ng-disabled="!appCtrl.selectedDegree"
+            ng-options="option.field as option.field for option in appCtrl.field" ng-click="appCtrl.getDoctor()">
+            <option value="" class="form-control">Choose</option>
+        </select>
+        <select ng-model="appCtrl.selectedDoctor" ng-disabled="!appCtrl.speciaslizations"
+            ng-options="option.name as option.name for option in appCtrl.doctorList">
+            <option value="" class="form-control">Choose</option>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label for="message">Message</label>
+        <input type="text" class="form-control" ng-model="appCtrl.message" placeholder="fill the message field if you reject the appointment">
+      </div>
+    </form>
+    <div class="d-flex justify-content-center">
+        <input type="button" value="Forward" ng-click="appCtrl.forward()" class="btn btn-success">
+        <input type="button" value="Reject" ng-click="appCtrl.reject()" class="btn btn-danger">
+    </div>
+</div>

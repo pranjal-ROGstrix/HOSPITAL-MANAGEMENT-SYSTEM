@@ -6,9 +6,10 @@
         login.formSubmit = function () {
             let email = login.email;
             let password = login.password;
+            let url =  window.backend__url+"patient_login/login/"
             $http({
                     method: 'POST',
-                    url: 'http://184aa08b28a4.ngrok.io/patient_login/login/',
+                    url: url,
                     data: {
                         'email': email,
                         'password': password,
@@ -24,12 +25,13 @@
                             $('#login__error').show();
                             email = "";
                             password = "";
-                            $('#email').on("focus", function(){
+                            $('#email').on("focus", function () {
                                 $('#login__error').hide();
-                             });
-                            
+                            });
+
                         } else {
                             console.log(formdata.data[0].age)
+                            sessionStorage.setItem("id", formdata.data[0].id);
                             sessionStorage.setItem("login", "success");
                             sessionStorage.setItem("email", email);
                             sessionStorage.setItem('age', formdata.data[0].age)
@@ -45,10 +47,10 @@
                             // mobile_no: "9123456789"
                             // name: "Pranjal Maurya"
                             // password: "pranjal"
-                              
+
                             // if ($('#email').focus()) {
                             //     $('#login__error').hide();
-                            
+
                         }
 
                     }
