@@ -21,11 +21,13 @@
             })
             .state('payment', {
                 url: '/payment',
-                templateUrl: 'payment.html'
+                templateUrl: 'payment.html',
+                controller: 'paymentCtrl as payCtrl'
             })
             .state('report', {
                 url: '/report',
-                templateUrl: 'report.html'
+                templateUrl: 'report.html',
+                controller: 'reportCtrl as repCtrl'
             })
             .state('profile', {
                 url: '/profile',
@@ -41,12 +43,12 @@
     app.controller('homeCtrl', function ($http) {
         // console.log(sessionStorage);
         let homeCtrl = this;
-        // if (sessionStorage.length == 1) {
-        //     window.location.href = "../login/index.html"
-        // }
-        // if (sessionStorage.login == "false") {
-        //     window.location.href = "../login/index.html"
-        // }
+        if (sessionStorage.length == 1) {
+            window.location.href = "../login/index.html"
+        }
+        if (sessionStorage.login == "false") {
+            window.location.href = "../login/index.html"
+        }
         homeCtrl.name = sessionStorage.name;
         homeCtrl.id = sessionStorage.id;
         homeCtrl.appointmenturl = url + "appointment/details/?id=";
@@ -78,7 +80,7 @@
             )
     })
 
-    app.controller('appointmentCtrl', function ($http) {
+    app.controller('appointmentCtrl', function ($http, $window) {
         let appCtrl = this;
         let today = new Date();
         appCtrl.todays_date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
@@ -92,7 +94,8 @@
         appCtrl.gender = sessionStorage.gender;
         appCtrl.mobile_no = sessionStorage.mobile_no;
         appCtrl.submit = function () {
-            console.log(appCtrl)
+            appCtrl.date_of_appointment = $('#appointment__date').val();
+            appCtrl.time_of_appointment = $('#appointment__time').val();
             $http({
                     method: "POST",
                     url: appCtrl.url,
@@ -107,9 +110,10 @@
                 .then(
                     function mysuccess(response) {
                         appCtrl.message = response.data;
-                        appCtrl.date_of_appointment = "";
-                        appCtrl.time_of_appointment = "";
-                        appCtrl.problem = ""
+                        $('#appointment__date').html("");
+                        $('#appointment__time').html("");
+                        appCtrl.problem = "";
+                        $window.location.reload();
                     }
                 )
         }
@@ -117,6 +121,15 @@
 
     app.controller('medicalCtrl', function ($http) {
         let medCtrl = this;
+        medCtrl.bloodgroups = {
+            0: 'A+',
+            1: 'A-',
+            2: 'B+',
+            3: 'AB+',
+            4: 'AB-',
+            5: 'O+',
+            6: 'O-'
+        }
         medCtrl.id = sessionStorage.id;
         medCtrl.url = url + 'appointment/medical_history/';
         medCtrl.submit = function () {
@@ -144,6 +157,30 @@
 
     })
 
+    app.controller('paymentCtrl', function ($http) {
+        let payCtrl = this;
+        $http({
+                method: 'GET',
+                url: url + 'show_fees/?key_id=' + sessionStorage.id
+            })
+            .then(
+                function mysuccess(response) {
+                    payCtrl.doctorfees = response.data;
+                }
+            )
+
+        $http({
+                method: 'GET',
+                url: url + 'test_cost/?key_id=' + sessionStorage.id
+            })
+            .then(
+                function mySuccess(response) {
+                    payCtrl.testfees = response.data;
+                }
+            )
+
+    })
+
     app.controller('profileCtrl', function () {
         let profileCtrl = this;
         profileCtrl.name = sessionStorage.name;
@@ -151,6 +188,39 @@
         profileCtrl.email = sessionStorage.email;
         profileCtrl.gender = sessionStorage.gender;
         profileCtrl.mobile_no = sessionStorage.mobile_no;
+    })
+
+    app.controller('reportCtrl', function ($http) {
+        let repCtrl = this;
+        $http({
+                method: 'GET',
+                url: url + 'report_date/?key_id=' + sessionStorage.id
+            })
+            .then(
+                function mySuccess(response) {
+                    repCtrl.dates = response.data;
+                    console.log(repCtrl.dates)
+                }
+            )
+        repCtrl.sendselectedDate = function () {
+            $http({
+                    method: 'POST',
+                    url: url + 'report_details/',
+                    data: {
+                        'selected_date': repCtrl.selectedDate
+                    }
+                })
+                .then(
+                    function mySuccess(response) {
+                        repCtrl.report = response.data[0];
+                        repCtrl.bp = repCtrl.report.bp;
+                        repCtrl.SpO2 = repCtrl.report.SpO2;
+                        repCtrl.prescription = repCtrl.report.prescription;
+                        repCtrl.message = repCtrl.report.message;
+                        console.log(response.data);
+                    }
+                )
+        }
     })
 
     app.controller('signoutCtrl', function () {

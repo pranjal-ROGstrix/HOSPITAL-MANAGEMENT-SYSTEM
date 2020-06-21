@@ -1,38 +1,50 @@
-<div class="main-content">
-    <h3 class="text-center table--heading">DOCTOR PAYMENT HISTORY</h3>
+<div class="main_content">
+
+    <h3 class="text-center table--heading">DOCTOR FEES PAYMENT</h3>
     <table class="text-center table">
         <tr>
+            <th class="text-center">P. ID</th>
+            <th class="text-center">Patient's Name</th>
             <th class="text-center">Doctor's Name</th>
-            <th class="text-center">Problem</th>
+            <th class="text-center">Test Cost</th>
             <th class="text-center">Date of Appointment</th>
             <th class="text-center">Time of Appointment</th>
-            <th class="text-center">Fees</th>
         </tr>
-        <tr ng-repeat="x in payCtrl.doctorfees">
+        <tr ng-repeat="x in payshowCtrl.apppay">
+            <td>{{x.id}}</td>
+            <td>{{x.key__name}}</td>
             <td>Dr.{{x.doctor_name}}</td>
-            <td>{{x.problem}}</td>
+            <td>{{x.fees}}</td>
             <td>{{x.date_of_appointment}}</td>
             <td>{{x.time_of_appointment}}</td>
-            <td>{{x.fees}}</td>
         </tr>
     </table>
 
-    <h3 class="text-center table--heading">TEST PAYMENT HISTORY</h3>
+
+    <h3 class="text-center table--heading">MEDICAL TESTS PAYMENT</h3>
     <table class="text-center table">
         <tr>
+            <th class="text-center">P. ID</th>
+            <th class="text-center">Patient's Name</th>
             <th class="text-center">Doctor's Name</th>
+            <th class="text-center">Test Cost</th>
             <th class="text-center">Test Name</th>
             <th class="text-center">Date of Appointment</th>
             <th class="text-center">Time of Appointment</th>
-            <th class="text-center">Fees</th>
         </tr>
-        <tr ng-repeat="x in payCtrl.testfees">
+        <tr ng-repeat="x in payshowCtrl.testpay">
+            <td>{{x.link__id}}</td>
+            <td>{{x.link__key__name}}</td>
             <td>Dr.{{x.doctor_name}}</td>
+            <td>{{x.cost}}</td>
             <td>{{x.payment_for}}</td>
             <td>{{x.link__date_of_appointment}}</td>
             <td>{{x.link__time_of_appointment}}</td>
-            <td>{{x.cost}}</td>
         </tr>
     </table>
+
+
 </div>
 
+<!-- date_of_appointment: "26-04-20"
+time_of_appointment: "5PM" -->

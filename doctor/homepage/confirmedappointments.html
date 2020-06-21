@@ -1,0 +1,25 @@
+<div class="main-content">
+    <h3 class="table-heading text-center">Your Confirmed Appointments</h3>
+
+    <table class="table">
+        <tr>
+            <th>Name</th>
+            <th>Booking Date</th>
+            <th>Time of Appointment</th>
+            <th>Date of Appointment</th>
+            <th>Problem</th>
+            <th>Medical report</th>
+        </tr>
+        <tr ng-repeat="patient_details in appconCtrl.confirmedAppointments">
+            <td>{{patient_details.key__name}}</td>
+            <td>{{patient_details.booking_date}}</td>
+            <td>{{patient_details.time_of_appointment}}</td>
+            <td>{{patient_details.date_of_appointment}}</td>
+            <td>{{patient_details.problem}}</td>
+            <td>
+                <button class="btn btn-primary" ng-click="appconCtrl.makereport(patient_details)">Make</button>
+            </td>
+        </tr>
+
+    </table>
+</div>

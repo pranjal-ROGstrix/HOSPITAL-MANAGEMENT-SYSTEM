@@ -1,0 +1,72 @@
+<div class="main-content">
+    <h3 class="table-heading text-center">Generate Report</h3>
+    <table class="table">
+        <tr>
+            <td>Name</td>
+            <td>{{reportCtrl.key__name}}</td>
+        </tr>
+        <tr>
+            <td>Booking Date</td>
+            <td>{{reportCtrl.booking_date}}
+            </td>
+        </tr>
+        <tr>
+            <td>Date of Appointment</td>
+            <td>{{reportCtrl.date_of_appointment}}</td>
+        </tr>
+        <tr>
+            <td>Time of Appointment</td>
+            <td>{{reportCtrl.time_of_appointment}}</td>
+        </tr>
+        <tr>
+            <td>Blood Group</td>
+            <td>{{reportCtrl.blood_group}}</td>
+        </tr>
+        <tr>
+            <td>Weight</td>
+            <td>{{reportCtrl.weight}}</td>
+        </tr>
+        <tr>
+            <td>Height</td>
+            <td>{{reportCtrl.height}}</td>
+        </tr>
+        <tr>
+            <td>Previous Problem</td>
+            <td>{{reportCtrl.previous_problem}}</td>
+        </tr>
+    </table>
+
+    <form novalidate>
+        <div class="form-group">
+            <label for="bp">Blood Pressure of Patient</label>
+            <input type="text" class="form-control" id="bp" ng-model="reportCtrl.bp">
+        </div>
+        <div class="form-group">
+            <label for="SpO2">SpO2 level of Patient</label>
+            <input type="text" class="form-control" id="SpO2" ng-model="reportCtrl.SpO2">
+        </div>
+        <div class="form-group">
+            <label for="Prescription">Prescription</label>
+            <input type="text" class="form-control" id="Prescription" ng-model="reportCtrl.prescription">
+        </div>
+        <div class="form-group">
+            <label for="tests">Prescribed Tests</label>
+            <input type="text" class="form-control" id="tests" ng-model="reportCtrl.test">
+        </div>
+        <button type="submit" class="btn btn-primary" ng-click="reportCtrl.submitreport()">Submit</button>
+    </form>
+    <!-- <div id="medical__myModal" class="medical__modal">
+        <div class="medical__modal-content">
+            <span class="medical__close">&times;</span>
+            <p>{{reportCtrl.message}}</p>
+        </div>
+    </div> -->
+
+</div>
+
+
+
+<!-- bp
+Sop2
+Problem
+Prescription -->

@@ -25,11 +25,16 @@
                             </div>
                         </div>
                     </div>
-                    <div class="form-group">
+
+                    <select id="country" ng-model="medCtrl.blood_group"
+                        ng-options="option as option for option in medCtrl.bloodgroups">
+                        <option value="" class="form-control">Select Your Blood Group</option>
+                    </select>
+                    <!-- <div class="form-group">
                         <label for="blood_group">Blood Group</label>
                         <input type="text" class="form-control" id="blood_group" ng-model="medCtrl.blood_group"
                             required>
-                    </div>
+                    </div> -->
                     <div class="form-group">
                         <label for="problem">Any previous problem</label>
                         <input type="text" class="form-control" id="problem" ng-model="medCtrl.problem" required>
@@ -55,22 +60,22 @@
 
     <script>
         var modal = document.getElementById("medical__myModal");
-      
+
         var btn = document.getElementById("medical__myBtn");
-      
+
         var span = document.getElementsByClassName("medical__close")[0];
-      
+
         btn.onclick = function () {
-          modal.style.display = "block";
+            modal.style.display = "block";
         }
-      
+
         span.onclick = function () {
-          modal.style.display = "none";
-        }
-      
-        window.onclick = function (event) {
-          if (event.target == modal) {
             modal.style.display = "none";
-          }
         }
-      </script>
+
+        window.onclick = function (event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+    </script>

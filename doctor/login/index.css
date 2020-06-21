@@ -57,13 +57,11 @@ body {
 
 
 .main--background {
-    background-image: url('https://www.nm.org/-/media/Northwestern/Images/homepage-stories/better-story-block.jpg');
+    background-image: url('img/thisone.jpg');
     background-size: cover;
     background-position: 56% 0px;
     position: relative;
 }
-
-/* https://www.massgeneral.org/assets/MGH/images/_global/homepage/parkinsons%20testimonial-1400x700.jpg */
 
 .main--background::before {
     content: "";

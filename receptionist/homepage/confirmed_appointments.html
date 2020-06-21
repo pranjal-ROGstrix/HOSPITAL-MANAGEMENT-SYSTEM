@@ -1,0 +1,58 @@
+<!-- appconCtrl.confirmedappointments -->
+<div class="main_content">
+    <!-- <button class="btn btn-primary" ng-click="pendocCtrl.showDoctors()">Display Doctors table for registration</button> -->
+    <h3 class="text-center table--heading">CONFIRMED APPOINTMENTS</h3>
+    <table class="table text-center">
+        <tr>
+            <th class="text-center">ID</th>
+            <th class="text-center">Name</th>
+            <th class="text-center">Email</th>
+            <th class="text-center">Mobile Number</th>
+            <th class="text-center">Booking Date</th>
+            <th class="text-center">Date of Appointment</th>
+            <th class="text-center">Time of Appointment</th>
+            <th class="text-center">Doctor</th>
+
+        </tr>
+        <tr ng-repeat="x in appconCtrl.confirmedappointments">
+            <td>{{x.id}}</td>
+            <td>{{x.key__name}}</td>
+            <td>{{x.key__email}}</td>
+            <td>{{x.key__mobile_no}}</td>
+            <td>{{x.booking_date}}</td>
+            <td>{{x.date_of_appointment}}</td>
+            <td>{{x.time_of_appointment}}</td>
+            <td>{{x.doctor_name}}</td>
+        </tr>
+    </table>
+
+    <h3 class="text-center table--heading">MODIFIED CONFIRMED APPOINTMENTS</h3>
+    <table class="table text-center">
+        <tr>
+            <th class="text-center">ID</th>
+            <th class="text-center">Name</th>
+            <th class="text-center">Email</th>
+            <th class="text-center">Mobile Number</th>
+            <th class="text-center">Booking Date</th>
+            <th class="text-center">Date of Appointment</th>
+            <th class="text-center">Time of Appointment</th>
+            <th class="text-center">Doctor</th>
+        </tr>
+        <tr ng-repeat="x in appconCtrl.modifyconfirmedappointments">
+            <td>{{x.id}}</td>
+            <td>{{x.key__name}}</td>
+            <td>{{x.key__email}}</td>
+            <td>{{x.key__mobile_no}}</td>
+            <td>{{x.booking_date}}</td>
+            <td>{{x.date_of_appointment}}</td>
+            <td>{{x.time_of_appointment}}</td>
+            <td>{{x.doctor_name}}</td>
+        </tr>
+    </table>
+</div>
+
+<!--
+fees: "500"
+id: 1
+key_id: 1
+ -->

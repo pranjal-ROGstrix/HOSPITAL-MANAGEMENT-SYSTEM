@@ -1,1 +1,32 @@
-you are at payment
+<!-- 
+    id,
+    doctor name,
+    test name,
+    cost
+ -->
+<div class="main_content">
+
+    <h3 class="table--heading text-center">PAYMENT FORM</h3>
+    <form novalidate name="payment_form">
+        <div class="form-group">
+            <label for="id">Appointment ID</label>
+            <input type="number" class="form-control" id="id" ng-model="payCtrl.id" required>
+        </div>
+        <div class="form-group">
+            <label for="doctor_name">Doctor Name</label>
+            <input type="text" class="form-control" id="doctor_name" ng-model="payCtrl.docname" required>
+        </div>
+        <div class="form-group">
+            <label for="test_name">Test</label>
+            <input type="text" class="form-control" id="test_name" ng-model="payCtrl.testname" required>
+        </div>
+        <div class="form-group">
+            <label for="cost">Cost</label>
+            <input type="number" class="form-control" id="cost" ng-model="payCtrl.cost" required>
+        </div>
+        <div class="d-flex justify-content-center">
+            <button type="submit" class="btn btn-primary" ng-click="payCtrl.submit()" disabled="disabled"
+                ng-disabled="payment_form.$invalid">Submit</button>
+        </div>
+    </form>
+</div>

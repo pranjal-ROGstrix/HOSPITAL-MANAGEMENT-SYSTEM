@@ -34,10 +34,20 @@
                 templateUrl: 'appointment.html',
                 controller: 'appointmentCtrl as appCtrl'
             })
+            .state('confirmed_appointments', {
+                url: '/confirmed_appointments',
+                templateUrl: 'confirmed_appointments.html',
+                controller: 'appconCtrl as appconCtrl'
+            })
             .state('payment', {
                 url: '/payment',
                 templateUrl: 'payment.html',
-                // controller:'paymentCtrl as payCtrl'
+                controller: 'paymentCtrl as payCtrl'
+            })
+            .state('show_payment', {
+                url:'/payments_show',
+                templateUrl:'payment_show.html',
+                controller:'paymentshowCtrl as payshowCtrl'
             })
             .state('report', {
                 url: '/report',
@@ -51,9 +61,9 @@
             })
     })
     app.controller('homeCtrl', function ($http) {
-        if (sessionStorage.length == 1) {
-            window.location.href = '../login/index.html';
-        }
+        // if (sessionStorage.length == 1) {
+        //     window.location.href = '../login/index.html';
+        // }
     })
 
     app.controller('pending__doctorsCtrl', function ($http, $window) {
@@ -160,6 +170,10 @@
     })
 
     app.controller('appointmentCtrl', function ($http, $window) {
+        $('#reject_hideme').hide();
+        $('#reject_button').click(function () {
+            $('#reject_hideme').toggle();
+        })
         let appCtrl = this;
         appCtrl.url = url;
         // Pending Appointment patient list dropdown generator
@@ -205,7 +219,6 @@
                 )
         }
 
-
         // Select doctors specializations Dropdown
         appCtrl.getSpecializations = function () {
             $http({
@@ -233,7 +246,7 @@
                     }
                 )
         }
-
+        // after on forward this function will be executed
         appCtrl.forward = function () {
             console.log(appCtrl.id, appCtrl.speciaslizations, appCtrl.selectedDoctor)
             $http({
@@ -248,6 +261,8 @@
                 .then(
                     function mySuccess(response) {
                         console.log(response)
+                        alert("Appointment forwarded to Doctor")
+                        $window.location.reload();
                     }
                 )
         }
@@ -276,49 +291,80 @@
 
         }
 
+    })
 
+    app.controller('appconCtrl', function ($http) {
+        let appconCtrl = this;
+        $http({
+                method: 'GET',
+                url: url + 'Manager_dashboard/appointment_confirm/'
+            })
+            .then(
+                function mySuccess(response) {
+                    appconCtrl.confirmedappointments = response.data;
+                    console.log(appconCtrl.confirmedappointments)
+                }
+            )
+        $http({
+                method: 'GET',
+                url: url + 'Manager_dashboard/modify_appointment_confirm/'
+            })
+            .then(
+                function mySuccess(response) {
+                    appconCtrl.modifyconfirmedappointments = response.data;
+                    console.log(appconCtrl.modifyconfirmedappointments)
+                }
+            )
+    })
 
+    app.controller('paymentCtrl', function ($http, $window) {
+        let payCtrl = this;
+        payCtrl.submit = function () {
+            $http({
+                    method: 'POST',
+                    url: url + 'Manager_dashboard/payment/',
+                    data: {
+                        'id': payCtrl.id,
+                        'doctor_name': payCtrl.docname,
+                        'test': payCtrl.testname,
+                        'cost': payCtrl.cost
+                    }
+                })
+                .then(
+                    function mySuccess(response) {
+                        console.log(response)
+                        alert(response.data);
+                        $window.location.reload();
 
+                    }
+                )
+        }
 
+    })
 
-        // }
-        // appCtrl.forward = function (a) {
-        //     console.log(a.id)
-        //     $http({
-        //             method: 'POST',
-        //             url: appCtrl.url + '/forward/',
-        //             data: {
-        //                 'id': a.id
-        //             }
-        //         })
-        //         .then(
-        //             function mySuccess(response) {
-        //                 console.log(response)
-        //                 if (response.data == "successfull") {
-        //                     console.log(response)
-        //                     $window.location.reload();
-        //                 }
-        //             }
-        //         )
-        // }
-        // appCtrl.reject = function (a) {
-        //     $http({
-        //             method: 'POST',
-        //             url: appCtrl.url + '/reject/',
-        //             data: {
-        //                 'id': a.id
-        //             }
-        //         })
-        //         .then(
-        //             function mySuccess(response) {
+    app.controller('paymentshowCtrl', function ($http) {
+        let payshowCtrl = this;
+        $http({
+            method:'GET',
+            url:url+'Manager_dashboard/payment_show/',
+        })
+        .then(
+            function mySuccess(response) {
+                payshowCtrl.testpay = response.data;
+                console.log(payshowCtrl.testpay);
+            }
+        )
 
-        //                 if (response.data == "successfull") {
-        //                     console.log(response)
-        //                     window.location.reload();
-        //                 }
-        //             }
-        //         )
-        // }
+        $http({
+            method:'GET',
+            url:url+'Manager_dashboard/payment_fees/'
+        })
+        .then(
+            function mySuccess(response) {
+                payshowCtrl.apppay = response.data;
+                console.log(payshowCtrl.apppay);
+            }
+        )
     })
 
     app.controller('logoutCtrl', function () {

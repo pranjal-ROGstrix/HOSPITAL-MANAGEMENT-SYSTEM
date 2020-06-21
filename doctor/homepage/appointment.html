@@ -1,0 +1,66 @@
+<div class="main-content">
+    <div class="form-group">
+        <select id="country" ng-model="appCtrl.selsectedPatient"
+            ng-options="option.id as option.key__name for option in appCtrl.patient_list"
+            ng-change="appCtrl.patientDetails()" required>
+            <option value="" class="form-control">Patient Name</option>
+        </select>
+
+        <table id="home_med" class="table" ng-disabled="!appCtrl.selsectedPatient">
+            <tr>
+                <!-- <th>Sr No</th> -->
+                <th>Characteristics</th>
+                <th>Details</th>
+            </tr>
+            <tr>
+                <td>Booking Date</td>
+                <td>{{appCtrl.patientDetailsdata_booking_date}}</td>
+            </tr>
+            <tr>
+                <td>Time of Appointment</td>
+                <td>{{appCtrl.patientDetailsdata_time_of_appointment}}</td>
+            </tr>
+            <tr>
+                <td>Date of Appointment</td>
+                <td>{{appCtrl.patientDetailsdata_date_of_appointment}}</td>
+            </tr>
+            <tr>
+                <td>Name</td>
+                <td>{{appCtrl.patientDetailsdata_name}}</td>
+            </tr>
+            <tr>
+                <td>Current Problem</td>
+                <td>{{appCtrl.patientDetailsdata_problem}}</td>
+            </tr>
+
+        </table>
+        <div class="d-flex justify-content-center">
+            <input type="button" value="Reject" id="reject_button" class="btn btn-danger">
+            <input type="button" value="Modify" id="modify_button" class="btn btn-primary">
+            <input type="button" value="Accept" ng-click="appCtrl.accept()" class="btn btn-success">
+        </div>
+    </div>
+    <div id="reject__hideme">
+        <div class="form-group">
+            <input type="text" class="form-control" placeholder="Fill a message for rejection of Appointment" required
+                ng-model="appCtrl.rejecttion_message">
+        </div>
+        <div class="d-flex justify-content-center">
+            <button type="submit" ng-click="appCtrl.submitrejectionMessage()" class="btn btn-primary">Submit</button>
+        </div>
+    </div>
+</div>
+<div id="modify_data">
+    <div class="form-group">
+        <input type="time" class="form-control" placeholder="Modified time of Appointment" required id="modifiedtime">
+    </div>
+    <div class="form-group">
+        <input type="date" class="form-control" placeholder="Modified Date of Appointment" required id="modifieddate">
+    </div>
+    <div class="d-flex justify-content-center">
+        <button type="submit" ng-click="appCtrl.submitModified()" class="btn btn-primary">Submit</button>
+    </div>
+</div>
+
+</form>
+</div>
