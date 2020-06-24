@@ -1,0 +1,31 @@
+<div class="main_content">
+    <!-- <button class="btn btn-primary" ng-click="pendocCtrl.showDoctors()">Display Doctors table for registration</button> -->
+    <h3 class="text-center table--heading">REPORTS</h3>
+    <table class="table text-center">
+        <tr>
+            <th class="text-center">ID</th>
+            <th class="text-center">Name</th>
+            <th class="text-center">Prescription</th>
+            <th class="text-center">B.P.</th>
+            <th class="text-center">Prescription</th>
+            <th class="text-center">Date of Appointment</th>
+            <th class="text-center">SpO2</th>
+            <th class="text-center">Problem</th>
+            <th class="text-center">Tests</th>
+            <th class="text-center">Doctor</th>
+
+        </tr>
+        <tr ng-repeat="x in repCtrl.reports">
+            <td>{{x.link__id}}</td>
+            <td>{{x.link__key__name}}</td>
+            <td>{{x.prescription}}</td>
+            <td>{{x.bp}}</td>
+            <td>{{x.prescription}}</td>
+            <td>{{x.link__date_of_appointment}}</td>
+            <td>{{x.SpO2}}</td>
+            <td>{{x.link__problem}}</td>
+            <td>{{x.message}}</td>
+            <td>{{x.link__doctor_name}}</td>
+        </tr>
+    </table>
+</div>

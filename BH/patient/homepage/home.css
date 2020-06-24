@@ -1,0 +1,39 @@
+.btn__home {
+    margin: .4rem;
+}
+.home_table_heading {
+    margin: 2rem 0;
+}
+.home_heading{
+    font-weight: 500;
+    font-size: 1.4rem;
+    font-weight: 700;
+}
+
+.home_heading--name {
+    font-size: 2rem;
+    font-weight: 300;
+}
+
+#no--notifications {
+    color: #999999;
+}
+
+.notifications {
+    
+}
+
+#notifications--table {
+    overflow-x: hidden;
+}
+
+.delnoti {
+    float: right;
+    margin-bottom: .6rem;
+    padding:.2rem .4rem;
+}
+
+.delnoti:hover {
+    cursor: pointer;
+    font-weight: 700;
+}

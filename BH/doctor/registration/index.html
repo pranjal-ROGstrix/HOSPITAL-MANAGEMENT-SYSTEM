@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- CSS only -->
+    <link rel="stylesheet" href="../../../cdn/bootstrap-4.5.0-dist/css/bootstrap.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="index.css">
+    <title>REGISTRATION | DOCTOR</title>
+</head>
+
+<body>
+    <header class="header">
+        <div class="main">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-12 col-md-6">
+                        <div class="content" ng-app="app">
+                            <form ng-controller="RegistrationController as registration" name="registrationForm"
+                                novalidate>
+                                <h2 class="form__heading text-center">Registration</h2>
+
+                                <div class="form-group">
+                                    <label for="name" class="form__label">Your name</label>
+                                    <input type="text" class="form-control" id="form__name" name="name"
+                                        ng-model="registration.name" required spellcheck="false"
+                                        ng-blur="registration.nameValidation()">
+                                    <span class="form__span__errors" name="registration.formspanerrorname"
+                                        id="form__span__error__name"></span>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="email" class="form__label">Email address</label>
+                                    <input type="email" class="form-control" id="form__email" name="email"
+                                        ng-model="registration.email" required>
+                                    <span
+                                        ng-if="(registrationForm.email.$error.required || registrationForm.email.$invalid || registrationForm.email.$error.minlength || registrationForm.email.$error.maxlength) && registrationForm.email.$touched"
+                                        class="form__span__errors" id="form__span__error__email">Enter
+                                        a valid Email</span>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="number">Contact Number</label>
+                                    <input type="number" class="form-control" id="mobile" ng-model="registration.number"
+                                        ng-blur="registration.mobileValidation()" required>
+                                    <span class="text-danger" id="form__span__error__mobile"></span>
+                                </div>
+
+                                <!-- <div class="form-group">
+                                    <label for="degree" class="form__label">Degree</label>
+                                    <input type="text" class="form-control" id="degree" name="degree"
+                                        ng-model="registration.degree" required>
+                                </div> -->
+
+                                <!-- <select name="repeatSelect" id="repeatSelect" ng-model="registration.model">
+                                    <option ng-repeat="option in registration.degree" value="{{option.link__degree}}">
+                                        {{option.link__degree}}</option>
+                                </select> -->
+                                <div class="form-group">
+                                    <select id="country" ng-model="registration.selectedDegree"
+                                        ng-options="option.degree as option.degree for option in registration.degree"
+                                        ng-click="registration.getSpecializations()">
+                                        <option value="" class="form-control">Degree</option>
+                                    </select>
+                                    <select id="state" ng-model="registration.speciaslizations"
+                                        ng-disabled="!registration.selectedDegree"
+                                        ng-options="option.field as option.field for option in registration.field">
+                                        <option value="" class="form-control">Specializations</option>
+                                    </select>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="password" class="form__label">Password</label>
+                                    <input type="password" class="form-control" name="password" required
+                                        ng-model="registration.password" ng-minlength="4" ng-maxlength="10">
+                                    <span class="form__span__errors" id="form__span__error__password"
+                                        ng-if="(registrationForm.libid.$error.required || registrationForm.libid.$invalid || registrationForm.libid.$error.minlength || registrationForm.libid.$error.maxlength) && registrationForm.libid.$touched">enter
+                                        a password of minlength of 4</span>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="confirm-password" class="form__label">Confirm Password</label>
+                                    <input type="password" class="form-control" id="confirm-password"
+                                        name="confirmPassword" ng-model="registration.confirmPassword"
+                                        ng-keyup="registration.confirmpasswordValidation()" required>
+                                    <span class="form__span__errors" id="form__span__error__confirmpassword"></span>
+                                </div>
+
+                                <div class="d-flex justify-content-center">
+                                    <button type="submit" class="btn btn-primary" id="button" disabled="disabled"
+                                        ng-disabled="registrationForm.$invalid"
+                                        ng-click="registration.formSubmit()">Submit</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="col-md-6"></div>
+                </div>
+            </div>
+    </header>
+
+
+
+
+
+    <!-- JS, Popper.js, and jQuery -->
+    <script src="../../../cdn/jquery-3.5.1.js">
+    </script>
+    <script src="../../../cdn/popper.js">
+    </script>
+    <script src="../../../cdn/bootstrap-4.5.0-dist/js/bootstrap.min.js">
+    </script>
+    <script src="../../../cdn/angular.min.js"></script>
+    <!-- <script src="../../Angular_files/angular.js"></script> -->
+    <script src="../../../url.js"></script>
+    <script src="index.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,169 @@
+*,
+*::after,
+*::before {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+
+body {
+    font-family: 'Montserrat', sans-serif;
+}
+
+.header {
+    background-image: url('img/bed-empty-equipments-floor-236380.jpg');
+    height: 95vh;
+    background-size: cover;
+    position: relative;
+}
+
+.header::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, .7);
+}
+
+.header__headings {
+    z-index: 1;
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    text-align: center;
+    width: 100%;
+}
+
+.header__headings--primary {
+    letter-spacing: 1rem;
+    font-size: 4rem;
+}
+
+.header__headings--secondary {
+    font-weight: 300;
+    letter-spacing: .8rem;
+}
+
+/* .whychoose {
+    height: 60vh; 
+} */
+
+
+.whychoose__heading--h {
+    margin: 3rem auto;
+    font-weight: 400;
+}
+
+
+
+.card {
+    width: 100%;
+    margin: 1rem 0;
+    transition: all .3s;
+}
+
+.card:hover {
+    -webkit-box-shadow: 0px 0px 16px -4px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 0px 0px 16px -4px rgba(0, 0, 0, 0.75);
+    box-shadow: 0px 0px 16px -4px rgba(0, 0, 0, 0.75);
+}
+
+.card:hover .card--boring,
+.card:hover .card-title {
+    color: #007bff;
+}
+
+.card-img-top {
+    margin: 3rem 0 2rem 0;
+    height: 5rem;
+}
+
+.button-patient {
+    font-family: inherit;
+    font-weight: 300;
+    border-radius: 0;
+    margin: 1.5rem auto;
+    color: white !important;
+}
+
+.button-patient--span {
+    font-weight: 500;
+}
+
+.section__anytimehelp {
+    background-color: #f4f4f4;
+    padding: 3rem 0;
+}
+
+.helpanytime--image {
+    background-image: url("img/besthealthcareprimarycarefamilymedicine.ashx");
+    background-size: 100% 100%;
+    height: 60vh;
+    position: relative;
+}
+
+.helpanytime--image::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, .2);
+}
+
+.helpanytime--center--parent {
+    position: relative;
+}
+
+.helpanytime--center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 95%;
+    padding: 1rem 0;
+}
+
+
+
+
+@media only screen and (max-width: 600px) {
+    .header__headings--primary {
+        letter-spacing: .3rem;
+        font-size: 2rem;
+    }
+
+    .header__headings--secondary {
+        font-size: 1rem;
+        font-weight: 300;
+        letter-spacing: initial;
+    }
+
+    .helpanytime--center {
+        position: relative;
+    }
+}
+
+.needhelp {
+    padding: 1rem 0;
+    background-color: grey;
+    color: white;
+}
+
+.needhelp--text {
+    font-size: 1rem;
+}
+
+.needhelp--number {
+    color: #fea527;
+}
+
+.needhelp--number:hover {
+    color: initial;
+}

@@ -1,0 +1,29 @@
+<div class="main-content">
+    <h3 class="table_heading text-center">Your Reports</h3>
+    <div class="form-group">
+        <select id="country" ng-model="repCtrl.selectedDate"
+            ng-options="option.link__date_of_appointment as option.link__date_of_appointment for option in repCtrl.dates"
+            ng-change="repCtrl.sendselectedDate()">
+            <option value="" class="form-control">Select Date</option>
+        </select>
+
+        <table class="table">
+            <tr>
+                <td>B.P.</td>
+                <td>{{repCtrl.bp}}</td>
+            </tr>
+            <tr>
+                <td>SpO2 Level</td>
+                <td>{{repCtrl.SpO2}}</td>
+            </tr>
+            <tr>
+                <td>Tests to be conducted</td>
+                <td>{{repCtrl.message}}</td>
+            </tr>
+            <tr>
+                <td>Prescription</td>
+                <td>{{repCtrl.prescription}}</td>
+            </tr>
+            <table>
+
+    </div>

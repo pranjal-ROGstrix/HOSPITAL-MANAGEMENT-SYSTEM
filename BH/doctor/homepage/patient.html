@@ -1,0 +1,38 @@
+<div class="main-content">
+    <table class="table">
+        <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Mobile No.</th>
+            <th>Age</th>
+            <th>Gender</th>
+            <th>Previous Problem</th>
+            <!-- <th>Weight</th> -->
+            <!-- <th>Height</th> -->
+            <!-- <th>Blood Group</th> -->
+        </tr>
+        <tr>
+            <td><input ng-model="search.key__name"></td>
+            <td><input ng-model="search.key__email"></td>
+            <td><input ng-model="search.key__mobile_no"></td>
+            <td><input ng-model="search.key__age"></td>
+            <td><input ng-model="search.key__gender"></td>
+            <td><input ng-model="search.previous_problem"></td>
+            <!-- <td><input ng-model="search.weight"></td> -->
+            <!-- <td><input ng-model="search.height"></td> -->
+            <!-- <td><input ng-model="search.blood_group"></td> -->
+        </tr>
+
+        <tr ng-repeat="x in patientCtrl.patientdetails | filter:search:strict">
+            <td>{{x.key__name}}</td>
+            <td>{{x.key__email}}</td>
+            <td>{{x.key__mobile_no}}</td>
+            <td>{{x.key__age}}</td>
+            <td>{{x.key__gender}}</td>
+            <td>{{x.previous_problem}}</td>
+            <!-- <td>{{x.weight}}</td> -->
+            <!-- <td>{{x.height}}</td> -->
+            <!-- <td>{{x.blood_group}}</td> -->
+        </tr>
+    </table>
+</div>

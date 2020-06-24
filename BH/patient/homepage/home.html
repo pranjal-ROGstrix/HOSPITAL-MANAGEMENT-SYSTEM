@@ -1,0 +1,66 @@
+<div class="main-content">
+    <h4 class="home_heading">Welcome <span class="home_heading--name">{{homeCtrl.name}}</span></h4>
+    <div class="notifications">
+        <h4 class="home_table_heading text-center">Your Notifications<span class="delnoti btn btn-danger"
+                ng-click="homeCtrl.remove__notification()" id="noti-button">X</span></h4>
+        <h5 id="no--notifications" class="text-center"></h5>
+        <table class="table" id="notifications--table">
+            <tr>
+                <th>Date of Appointment</th>
+                <th>Message</th>
+                <th>Status</th>
+            </tr>
+            <tr ng-repeat="x in homeCtrl.notifications">
+                <td>{{x.date_of_appointment}}</td>
+                <td>{{x.message}}</td>
+                <td>{{x.status}}</td>
+            </tr>
+        </table>
+
+    </div>
+    <h5 class="text-center home_table_heading">Your Appointment Details</h5>
+
+    <table id="home__table" class="table">
+        <tr>
+            <!-- <th>Sr No</th> -->
+            <th>booking date</th>
+            <th>Date of Appointment</th>
+            <th>Time of Appointment</th>
+            <th>Status</th>
+            <th>Fees</th>
+        </tr>
+        <tr ng-repeat="x in homeCtrl.appointment_details">
+            <!-- <td>{{x.id}}</td> -->
+            <td>{{x.booking_date}}</td>
+            <td>{{x.date_of_appointment}}</td>
+            <td>{{x.time_of_appointment}}</td>
+            <td>{{x.status}}</td>
+            <td>{{x.fees}}</td>
+        </tr>
+    </table>
+    <h5 class="text-center home_table_heading">Your Medical History</h5>
+    <table id="home_med" class="table">
+        <tr>
+            <!-- <th>Sr No</th> -->
+            <th>Characteristics</th>
+            <th>Details</th>
+        </tr>
+        <tr>
+            <td>Booking Date</td>
+            <td>{{homeCtrl.height}}</td>
+        </tr>
+        <tr>
+            <td>Your weight</td>
+            <td>{{homeCtrl.weight}}</td>
+        </tr>
+        <tr>
+            <td>Your Blood Group</td>
+            <td>{{homeCtrl.blood_group}}</td>
+        </tr>
+        <tr>
+            <td>Previous Problems faced</td>
+            <td>{{homeCtrl.previous_problem}}</td>
+        </tr>
+    </table>
+
+</div>

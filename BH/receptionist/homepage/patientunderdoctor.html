@@ -1,0 +1,33 @@
+<div class="main_content">
+    <select ng-model="docpatCtrl.selecteddoctor"
+        ng-options="option.name as option.name for option in docpatCtrl.doclist"
+        ng-change="docpatCtrl.getpatientdetails()">
+        <option value="" class="form-control">Doctor's name</option>
+    </select><div class="form-group">
+        <input ng-model="searchhere" placeholder="search patients here" id="search__feature" class="form-control"/>
+    </div>
+    
+    <table class="table">
+        <th>Name</th>
+        <th>Email</th>
+        <th>Mobile No.</th>
+        <th>Age</th>
+        <th>Gender</th>
+        <th>Previous Problem</th>
+        <th>Weight</th>
+        <th>Height</th>
+        <th>Blood Group</th>
+        </tr>
+        <tr ng-repeat="x in docpatCtrl.patient_list | filter:searchhere">
+            <td>{{x.key__name}}</td>
+            <td>{{x.key__email}}</td>
+            <td>{{x.key__mobile_no}}</td>
+            <td>{{x.key__age}}</td>
+            <td>{{x.key__gender}}</td>
+            <td>{{x.previous_problem}}</td>
+            <td>{{x.weight}}</td>
+            <td>{{x.height}}</td>
+            <td>{{x.blood_group}}</td>
+        </tr>
+    </table>
+</div>
